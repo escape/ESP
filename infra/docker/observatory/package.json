@@ -1,0 +1,11 @@
+{
+  "name": "observatory",
+  "version": "0.1.0",
+  "description": "Observatory - Dashboard and API for political influence data",
+  "main": "observatory_app.js",
+  "scripts": {
+    "start": "node observatory_app.js",
+    "dev": "node observatory_app.js"
+  },
+  "dependencies": {}
+}

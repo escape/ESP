@@ -1,12 +1,42 @@
 services:
   registry:
     build: ./registry
+    container_name: esp-registry
     ports: ["8000:8000"]
     environment:
       - ESP_MODE=dev
+      - PORT=8000
     volumes:
-      - ../../data:/app/data
-  dashboard:
-    build: ./dashboard
+      - ../../registries:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    networks:
+      - esp-network
+
+  observatory:
+    build: ./observatory
+    container_name: esp-observatory
     ports: ["5173:5173"]
-    depends_on: [registry]
+    depends_on:
+      registry:
+        condition: service_healthy
+    environment:
+      - REGISTRY_URL=http://registry:8000
+    volumes:
+      - ../../audit-ledger:/app/audit-ledger
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5173/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    networks:
+      - esp-network
+
+networks:
+  esp-network:
+    driver: bridge

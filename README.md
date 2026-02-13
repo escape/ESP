@@ -134,8 +134,12 @@ governance/          -> Policy, procedures, sanctions, oversight
 git clone <your-repo-url> esp
 cd esp
 
-# start minimal local stack (registry API + dashboard mock)
+# start minimal local stack (registry API + observatory dashboard)
 docker compose -f infra/docker/compose.yml up --build
+
+# Services will be available at:
+# - Registry API:   http://localhost:8000
+# - Observatory:    http://localhost:5173
 
 # ingest sample data
 python ingestion/pipelines/load_samples.py data/samples/example_ads.jsonl
@@ -145,6 +149,12 @@ python cli/espctl.py --help
 ```
 
 > **Note:** This skeleton contains mock services and sample data. Swap in real connectors as they become available.
+
+### Docker Services
+- **Registry** (Python Flask): Machine-readable political influence data service with health checks
+- **Observatory** (Node.js): Dashboard + API interface for search and analysis
+
+Both services are networked and will restart automatically on failure. Check logs with `docker compose logs <service-name>`.
 
 ---
 
@@ -156,6 +166,8 @@ esp/
 ├─ api/
 │  ├─ open-influence-api.md          # ESP API surface
 │  └─ examples/                      # curl/httpie samples
+├─ audit-ledger/
+│  └─ README.md                      # Append-only, signed logs of amplification
 ├─ cli/
 │  └─ espctl.py                      # utility CLI
 ├─ dashboard/
@@ -173,13 +185,18 @@ esp/
 │  ├─ SECURITY.md
 │  └─ MAINTAINERS.md
 ├─ infra/
-│  ├─ docker/compose.yml             # dev compose
+│  ├─ docker/
+│  │  ├─ compose.yml                 # dev compose (registry + observatory)
+│  │  ├─ registry/                   # Registry service Docker setup
+│  │  └─ observatory/                # Observatory service Docker setup
 │  └─ terraform/                     # IaC stubs
 ├─ ingestion/
 │  ├─ scrapers/                      # platform/library scrapers (stubs)
 │  └─ pipelines/                     # ETL + validation
 ├─ legal/
 │  └─ policy/esp-policy.md           # policy baseline
+├─ registries/
+│  └─ README.md                      # Open, machine-readable political influence data
 ├─ schemas/
 │  ├─ political_ad.schema.json
 │  └─ audit_ledger.schema.json
