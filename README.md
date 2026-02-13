@@ -1,8 +1,8 @@
 # ESP — Epistemic Sovereignty Protocol
 
-## **The idea**
+## **Proof of concept for learning purposes**
 
-### **1. Purpose**
+### **1. Idea**
 
 To safeguard the cognitive independence of citizens by guaranteeing transparency, traceability, and auditability of digital influence systems — political, commercial, or algorithmic — within the democratic sphere.
 
