@@ -1,6 +1,6 @@
 # ESP — Epistemic Sovereignty Protocol
 
-## **At a glance**
+## **The idea**
 
 ### **1. Purpose**
 
@@ -81,7 +81,7 @@ To safeguard the cognitive independence of citizens by guaranteeing transparency
 *   Inclusion of transparency clauses in trade and data-transfer agreements.
 
 
-# ESP — Epistemic Sovereignty Protocol
+## Draft Protocol
 
 **Tagline:** Know who pays to change your mind.
 
