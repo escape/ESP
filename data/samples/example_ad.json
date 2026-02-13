@@ -1,0 +1,53 @@
+{
+  "id": "ad_001",
+  "jurisdiction": "EU/IT",
+  "payer": {
+    "name": "Citizens for Clarity",
+    "legal_entity_id": "IT-ABC123",
+    "country": "IT",
+    "funding_chain": [
+      "Citizens for Clarity",
+      "Friends of Clarity Foundation"
+    ]
+  },
+  "publisher": {
+    "platform": "Meta/Instagram",
+    "account_handle": "@clarity_now",
+    "account_id": "1234567890"
+  },
+  "creative": {
+    "type": "image",
+    "url": "https://example.org/creative/ad_001.png",
+    "hash": "deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+    "caption": "Vote informed. See who pays."
+  },
+  "distribution": {
+    "placements": [
+      "feed",
+      "stories"
+    ],
+    "organicity": "paid"
+  },
+  "targeting": {
+    "parameters": {
+      "geo": "IT",
+      "age_min": 18
+    },
+    "cohort_size": 150000,
+    "protected_attributes_excluded": true
+  },
+  "spend": {
+    "currency": "EUR",
+    "amount": 10000
+  },
+  "time": {
+    "start": "2025-09-01T00:00:00Z",
+    "end": "2025-09-10T23:59:59Z"
+  },
+  "provenance": {
+    "source": "pilot-registry",
+    "ingested_at": "2025-10-10T09:40:37.048164Z",
+    "signature": "SIG_PLACEHOLDER"
+  },
+  "notes": "sample record"
+}

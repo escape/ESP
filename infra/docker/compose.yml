@@ -1,0 +1,12 @@
+services:
+  registry:
+    build: ./registry
+    ports: ["8000:8000"]
+    environment:
+      - ESP_MODE=dev
+    volumes:
+      - ../../data:/app/data
+  dashboard:
+    build: ./dashboard
+    ports: ["5173:5173"]
+    depends_on: [registry]

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ESP Audit Ledger Entry",
+  "type": "object",
+  "required": [
+    "id",
+    "event_time",
+    "system",
+    "content_ref",
+    "cohort",
+    "rule",
+    "score",
+    "prev_hash",
+    "sig"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "event_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "system": {
+      "type": "string",
+      "description": "recommender/moderation system id"
+    },
+    "content_ref": {
+      "type": "string",
+      "description": "creative hash or url"
+    },
+    "cohort": {
+      "type": "object",
+      "required": [
+        "size"
+      ],
+      "properties": {
+        "size": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "descriptor": {
+          "type": "string",
+          "description": "e.g., geo:IT-VE + interest:immigration"
+        }
+      }
+    },
+    "rule": {
+      "type": "string",
+      "description": "amplification rule or model feature"
+    },
+    "score": {
+      "type": "number",
+      "description": "confidence or ranking score"
+    },
+    "prev_hash": {
+      "type": "string",
+      "description": "hash of previous ledger entry"
+    },
+    "sig": {
+      "type": "string",
+      "description": "signature of emitting system"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "audit_0001",
+  "event_time": "2025-10-10T09:40:37.048221Z",
+  "system": "observatory-mock-recommender",
+  "content_ref": "deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+  "cohort": {
+    "size": 50000,
+    "descriptor": "geo:IT-VE;interest:politics_general"
+  },
+  "rule": "boost_high_engagement",
+  "score": 0.87,
+  "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "sig": "SIG_PLACEHOLDER"
+}

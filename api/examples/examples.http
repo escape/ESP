@@ -1,0 +1,7 @@
+# HTTP examples (httpie)
+
+# create an ad record
+http POST :8000/api/v1/registry/ads < data/samples/example_ad.json
+
+# append audit event
+http POST :8000/api/v1/ledger/append < data/samples/example_audit.json

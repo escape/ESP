@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ESP Political Ad",
+  "type": "object",
+  "required": [
+    "id",
+    "jurisdiction",
+    "payer",
+    "publisher",
+    "creative",
+    "distribution",
+    "targeting",
+    "spend",
+    "time",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable unique id (UUID or hash)"
+    },
+    "jurisdiction": {
+      "type": "string",
+      "description": "Country/region code (ISO, e.g., EU/IT)"
+    },
+    "payer": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "legal_entity_id": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "funding_chain": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Known intermediaries, nearest-source first"
+        }
+      }
+    },
+    "publisher": {
+      "type": "object",
+      "required": [
+        "platform"
+      ],
+      "properties": {
+        "platform": {
+          "type": "string",
+          "description": "e.g., Meta/Instagram, YouTube, X"
+        },
+        "account_handle": {
+          "type": "string"
+        },
+        "account_id": {
+          "type": "string"
+        }
+      }
+    },
+    "creative": {
+      "type": "object",
+      "required": [
+        "type",
+        "hash"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "text",
+            "image",
+            "video",
+            "audio",
+            "mixed"
+          ]
+        },
+        "url": {
+          "type": "string"
+        },
+        "hash": {
+          "type": "string",
+          "description": "sha256 of creative asset"
+        },
+        "caption": {
+          "type": "string"
+        }
+      }
+    },
+    "distribution": {
+      "type": "object",
+      "required": [
+        "placements"
+      ],
+      "properties": {
+        "placements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "organicity": {
+          "type": "string",
+          "enum": [
+            "paid",
+            "boosted",
+            "influencer-paid",
+            "mixed"
+          ]
+        }
+      }
+    },
+    "targeting": {
+      "type": "object",
+      "required": [
+        "cohort_size"
+      ],
+      "properties": {
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number",
+              "boolean"
+            ]
+          }
+        },
+        "cohort_size": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "protected_attributes_excluded": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "spend": {
+      "type": "object",
+      "required": [
+        "currency",
+        "amount"
+      ],
+      "properties": {
+        "currency": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "time": {
+      "type": "object",
+      "required": [
+        "start",
+        "end"
+      ],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "source",
+        "ingested_at",
+        "signature"
+      ],
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "ad library url, disclosure file, FOIA id, etc."
+        },
+        "ingested_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "signature": {
+          "type": "string",
+          "description": "sig of submitting entity over canonical record"
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}
